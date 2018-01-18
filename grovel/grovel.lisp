@@ -783,7 +783,7 @@ string."
     (let ((lib-file (make-so-file-name (make-soname lib-soname output-defaults)))
           (o-file (make-o-file-name output-defaults "__wrapper")))
         (cc-compile o-file (list (cc-include-grovel-argument) c-file))
-        (link-shared-library lib-file (list o-file))
+        (link-static-library lib-file (list o-file))
         ;; FIXME: hardcoded library path.
         (values (generate-bindings-file lib-file lib-soname lisp-forms output-defaults)
                 lib-file)))))
